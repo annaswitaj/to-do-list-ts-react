@@ -1,19 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import './style.css'
+import { useCartState } from '../context/context'
 
-interface TodoProps {
-  todo: string
-  setTodo: React.Dispatch<React.SetStateAction<string>>
-  handleAdd: (e: React.FormEvent) => void
-}
-const InputField: React.FC<TodoProps> = ({ todo, setTodo, handleAdd }) => {
+const InputField: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
-
+  const { dispatch } = useCartState()
+  const [todo, setTodo] = useState('')
   return (
     <form
       className='input'
-      onSubmit={(e) => {
-        handleAdd(e)
+      onSubmit={(e: React.FormEvent) => {
+        e.preventDefault()
+        if (todo) {
+          dispatch({
+            type: 'add',
+            payload: todo,
+          })
+          setTodo('')
+        }
         inputRef.current?.blur()
       }}
     >
