@@ -3,12 +3,15 @@ import './style.css'
 import { useCartState } from '../context/context'
 
 const InputField: React.FC = () => {
+  //TODO: lack of semicolons
   const inputRef = useRef<HTMLInputElement>(null)
   const { dispatch } = useCartState()
   const [todo, setTodo] = useState('')
   return (
+      // TODO: use flex on form instead of relative/absolute
     <form
       className='input'
+      //TODO: extract this function to variable handleSubmit
       onSubmit={(e: React.FormEvent) => {
         e.preventDefault()
         if (todo) {

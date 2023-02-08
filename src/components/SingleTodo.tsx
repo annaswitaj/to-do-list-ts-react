@@ -12,6 +12,7 @@ type TodosProps = {
   todo: Todo
 }
 
+// TODO Change name to TodoItem
 const SingleTodo: React.FC<TodosProps> = ({ todo }) => {
   const [edit, setEdit] = useState<boolean>(false)
   const [editName, setEditName] = useState<string>(todo.todo)

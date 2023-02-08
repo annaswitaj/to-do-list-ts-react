@@ -8,6 +8,7 @@ const TodoList: React.FC = () => {
   const { state } = useCartState()
   return (
     <>
+    {/* TODO: Add message with "there is no todos in your list" */}
       {state.length > 0 && (
         <div className='todos'>
           {state.map((todo) => (
