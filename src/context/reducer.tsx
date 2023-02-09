@@ -9,7 +9,10 @@ export type Action =
 export const reducer = (state: Todo[], action: Action): Todo[] => {
   switch (action.type) {
     case 'add':
-      return [{ id: Date.now(), todo: action.payload, isDone: false }, ...state]
+      return [
+        { id: Date.now(), desription: action.payload, isDone: false },
+        ...state,
+      ]
 
     case 'remove':
       return state.filter((item) => item.id !== action.payload)

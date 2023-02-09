@@ -7,22 +7,25 @@ const InputField: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const { dispatch } = useCartState()
   const [todo, setTodo] = useState('')
+
+  //DONE: extract this function to variable handleSubmit
+  const handleSubmitClick = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (todo) {
+      dispatch({
+        type: 'add',
+        payload: todo,
+      })
+      setTodo('')
+    }
+    inputRef.current?.blur()
+  }
+
   return (
-      // TODO: use flex on form instead of relative/absolute
+    // TODO: use flex on form instead of relative/absolute
     <form
       className='input'
-      //TODO: extract this function to variable handleSubmit
-      onSubmit={(e: React.FormEvent) => {
-        e.preventDefault()
-        if (todo) {
-          dispatch({
-            type: 'add',
-            payload: todo,
-          })
-          setTodo('')
-        }
-        inputRef.current?.blur()
-      }}
+      onSubmit={(e: React.FormEvent) => handleSubmitClick(e)}
     >
       <input
         ref={inputRef}
