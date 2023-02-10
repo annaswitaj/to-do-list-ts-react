@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import TodoItem from './TodoItem'
-import './style.css'
-import { useCartState } from '../context/context'
+import TodoItem from './TodoItem';
+import './style.css';
+import { useCartState } from '../context/context';
 
 const TodoList: React.FC = () => {
-  const { state } = useCartState()
+  const { state } = useCartState();
   /* DONE: Add message with "there is no todos in your list" */
   return (
     <div className='todos'>
@@ -15,7 +15,7 @@ const TodoList: React.FC = () => {
         <div className='text'>What do you have to do today? Add task :D</div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default TodoList
+export default TodoList;

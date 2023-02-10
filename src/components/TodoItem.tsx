@@ -1,49 +1,47 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { Todo } from './model'
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
+import React, { useState, useRef, useEffect } from 'react';
+import { Todo } from './model';
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import {
   IoIosCheckmarkCircleOutline,
   IoIosCheckmarkCircle,
-  IoMdCheckmark,
-} from 'react-icons/io'
-import { MdOutlineCancel } from 'react-icons/md'
+} from 'react-icons/io';
 
-import { useCartState } from '../context/context'
+import { useCartState } from '../context/context';
 
 type TodosProps = {
-  todo: Todo
-}
+  todo: Todo;
+};
 // DONE Change name to TodoItem
 const TodoItem: React.FC<TodosProps> = ({ todo }) => {
-  const [isEditing, setIsEditing] = useState<boolean>(false)
-  const [editName, setEditName] = useState<string>(todo.desription)
-  const { dispatch } = useCartState()
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [editName, setEditName] = useState<string>(todo.description);
+  const { dispatch } = useCartState();
 
   const handleDoneClick = () => {
-    dispatch({ type: 'done', payload: todo.id })
-  }
+    dispatch({ type: 'done', payload: todo.id });
+  };
 
   const handleDeleteClick = () => {
-    dispatch({ type: 'remove', payload: todo.id })
-  }
+    dispatch({ type: 'remove', payload: todo.id });
+  };
 
-  const handleEditClick = (e: React.FormEvent) => {
-    console.log(editName)
-    e.preventDefault()
-    dispatch({ type: 'edit', payload: { id: todo.id, todo: editName } })
-    setIsEditing(false)
-  }
+  const handleEditSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(editName);
+    dispatch({ type: 'edit', payload: { id: todo.id, description: editName } });
+    setIsEditing(false);
+  };
 
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    inputRef.current?.focus()
-  }, [isEditing])
+    inputRef.current?.focus();
+  }, [isEditing]);
 
   return (
     <form
       className='todos__single'
-      onSubmit={(e: React.FormEvent) => handleEditClick(e)}
+      onSubmit={(e: React.FormEvent) => handleEditSubmit(e)}
     >
       {isEditing ? (
         <input
@@ -54,9 +52,9 @@ const TodoItem: React.FC<TodosProps> = ({ todo }) => {
           className='todos__single--text'
         ></input>
       ) : todo.isDone ? (
-        <s className='todos__single--text'>{todo.desription}</s>
+        <s className='todos__single--text'>{todo.description}</s>
       ) : (
-        <span className='todos__single--text'>{todo.desription}</span>
+        <span className='todos__single--text'>{todo.description}</span>
       )}
 
       <div>
@@ -65,7 +63,7 @@ const TodoItem: React.FC<TodosProps> = ({ todo }) => {
             className='icon'
             onClick={() => {
               if (!isEditing && !todo.isDone) {
-                setIsEditing(!isEditing)
+                setIsEditing(!isEditing);
               }
             }}
           >
@@ -86,21 +84,9 @@ const TodoItem: React.FC<TodosProps> = ({ todo }) => {
             )}
           </button>
         )}
-        {/* 
-        {isEditing && (
-          <button className='icon' onClick={() => setIsEditing(!isEditing)}>
-            <MdOutlineCancel />
-          </button>
-        )} */}
-
-        {/* {isEditing && (
-          <button className='icon' type='submit'>
-            <IoMdCheckmark />
-          </button>
-        )} */}
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default TodoItem
+export default TodoItem;

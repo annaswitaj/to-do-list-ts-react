@@ -1,6 +1,6 @@
 export interface Todo {
-  id: number
-  desription: string
-  isDone: boolean
+  id: number;
+  description: string;
+  isDone: boolean;
 }
 // DONE: change todo to title/description
