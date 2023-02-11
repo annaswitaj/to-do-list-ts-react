@@ -14,9 +14,3 @@ root.render(
     </Context>
   </React.StrictMode>
 );
-
-// DONE: If item is done then dont display the edit button
-// DONE: Change span to buttons
-// DONE: Change title of page
-// DONE handleEdit => handleEditClick etc.
-// DONE const [edit, setEdit] = useState<boolean>(false) => isEditing/isBeingEdited

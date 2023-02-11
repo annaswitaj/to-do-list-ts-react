@@ -3,12 +3,10 @@ import './style.css';
 import { useCartState } from '../context/context';
 
 const InputField: React.FC = () => {
-  //DONE: lack of semicolons
   const inputRef = useRef<HTMLFormElement>(null);
   const { dispatch } = useCartState();
   const [description, setDescription] = useState('');
 
-  //DONE: extract this function to variable handleSubmit
   const handleSubmitClick = (e: React.FormEvent) => {
     e.preventDefault();
     if (description) {

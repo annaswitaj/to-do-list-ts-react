@@ -11,7 +11,6 @@ import { useCartState } from '../context/context';
 type TodosProps = {
   todo: Todo;
 };
-// DONE Change name to TodoItem
 const TodoItem: React.FC<TodosProps> = ({ todo }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editName, setEditName] = useState<string>(todo.description);

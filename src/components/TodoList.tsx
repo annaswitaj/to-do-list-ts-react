@@ -6,7 +6,6 @@ import { useCartState } from '../context/context';
 
 const TodoList: React.FC = () => {
   const { state } = useCartState();
-  /* DONE: Add message with "there is no todos in your list" */
   return (
     <div className='todos'>
       {state.length > 0 ? (

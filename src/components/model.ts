@@ -3,4 +3,3 @@ export interface Todo {
   description: string;
   isDone: boolean;
 }
-// DONE: change todo to title/description
