@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import './App.css'
-import InputField from './components/InputField'
+import './App.css';
+import InputField from './components/InputField';
 
-import TodoList from './components/TodoList'
+import TodoList from './components/TodoList';
 
 const App: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const App: React.FC = () => {
       <InputField></InputField>
       <TodoList></TodoList>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

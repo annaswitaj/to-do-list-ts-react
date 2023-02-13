@@ -1,23 +1,20 @@
-import React from 'react'
+import React from 'react';
 
-import SingleTodo from './SingleTodo'
-import './style.css'
-import { useCartState } from '../context/context'
+import TodoItem from './TodoItem';
+import './style.css';
+import { useCartState } from '../context/context';
 
 const TodoList: React.FC = () => {
-  const { state } = useCartState()
+  const { state } = useCartState();
   return (
-    <>
-    {/* TODO: Add message with "there is no todos in your list" */}
-      {state.length > 0 && (
-        <div className='todos'>
-          {state.map((todo) => (
-            <SingleTodo key={todo.id} todo={todo}></SingleTodo>
-          ))}
-        </div>
+    <div className='todos'>
+      {state.length > 0 ? (
+        state.map((todo) => <TodoItem key={todo.id} todo={todo}></TodoItem>)
+      ) : (
+        <div className='text'>What do you have to do today? Add task :D</div>
       )}
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default TodoList
+export default TodoList;
